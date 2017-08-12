@@ -17,6 +17,10 @@ module Macros
       end
     end
 
+    def extract_field(xml, xpath, namespaces)
+      xml.xpath(xpath, namespaces).map(&:text)
+    end
+
     def apply_translation(values, options)
       translation_map = Traject::TranslationMap.new(*Array(options[:translation_map]))
       # without overwriting (further) translation map, could add

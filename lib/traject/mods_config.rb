@@ -72,6 +72,7 @@ to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:cartographics/mods:pr
 to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:cartographics/mods:scale')
 to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:geographic')
 to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:geographicCode')
+# there must be a better xpath way to iterate over text of all possible children
 to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:hierarchicalGeographic/mods:area')
 to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:hierarchicalGeographic/mods:city')
 to_field 'cho_spatial', extract_mods('/*/mods:subject/mods:hierarchicalGeographic/mods:citySection')
