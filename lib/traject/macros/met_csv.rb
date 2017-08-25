@@ -25,7 +25,7 @@ module Macros
 
         return if image_json.blank?
         # Some records e.g. 321624, don't return any results
-        result = image_json['results'].first
+        result = image_json['results'].first unless image_json['results'].nil?
         if result
           thumbnail = result['webImageUrl']
           accumulator << transform_values(context, 'wr_id' => literal(thumbnail))
