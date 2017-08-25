@@ -47,8 +47,14 @@ import:
         agg_data_provider: Princeton University Library
         inst_id: princeton
     numismatics:
-     directory: coins
-     traject_file: numismatic_csv_config
-     properties:
-       agg_provider: American Numismatic Society
-       inst_id: ans
+      directory: coins
+      traject_file: numismatic_csv_config
+      properties:
+        agg_provider: American Numismatic Society
+        inst_id: ans
+    penn_egyptian:
+      directory: museum/records
+      only: !ruby/regexp '/egyptian-20170820.csv/'
+      trajact_file: penn_egyptian_config
+      properties:
+        agg_provider: University of Pennsylvania Library
