@@ -52,3 +52,10 @@ import:
      properties:
        agg_provider: American Numismatic Society
        inst_id: ans
+    harvard_fgdc:
+      directory: maps/records/harvard
+      traject_file: fgdc_config
+      properties:
+          agg_provider: Harvard University Library
+          agg_data_provider: Harvard University. Center for Geographic Analysis
+          inst_id: harvard

@@ -18,12 +18,8 @@ module Macros
       institution = context.settings.fetch('agg_provider')
       if institution.include?('Harvard')
         harvard_uuid(record)
-      elsif institution.include?('MIT')
-        record.xpath('/*/spdoinfo/ptvctinf/sdtsterm/@Name').map(&:text)
-      elsif institution.include?('Tufts')
-        record.xpath('/*/spdoinfo/ptvctinf/sdtsterm/@Name').map(&:text)
       else
-        url
+        record.xpath('/*/spdoinfo/ptvctinf/sdtsterm/@Name').map(&:text)
       end
     end
 
@@ -37,15 +33,7 @@ module Macros
 
     def select_identifier(record, context)
       uuid = extract_uuid(record, context)
-      if uuid.present?
-        uuid
-      elsif context.settings.key?('command_line.filename')
-        identifier = context.settings.fetch('command_line.filename')
-        File.basename(identifier, File.extname(identifier))
-      elsif context.settings.key?('identifier')
-        identifier = context.settings.fetch('identifier')
-        File.basename(identifier, File.extname(identifier))
-      end
+      uuid.presence || default_identifier(context)
     end
 
     # @param xpath [String] the xpath query expression

@@ -13,10 +13,6 @@ extend Macros::FGDC
 settings do
   provide 'writer_class_name', 'DlmeJsonResourceWriter'
   provide 'reader_class_name', 'XmlReader'
-  provide 'allow_empty_fields', true
-  provide 'agg_provider', 'Harvard University Library'
-  provide 'agg_data_provider', 'Harvard University. Center for Geographic Analysis.'
-  provide 'inst_id', 'harvard'
 end
 
 # Record Identifier

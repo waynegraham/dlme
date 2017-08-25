@@ -5,7 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Transforming FGDC files' do
   describe 'Transform Harvard FGDC file' do
     let(:indexer) do
-      Traject::Indexer.new('exhibit_slug' => slug).tap do |i|
+      Traject::Indexer.new('exhibit_slug' => slug, 'source' => 'harvard_fgdc').tap do |i|
+        i.load_config_file('config/traject.rb')
         i.load_config_file('lib/traject/fgdc_config.rb')
       end
     end
@@ -23,7 +24,7 @@ RSpec.describe 'Transforming FGDC files' do
       expect(CreateResourceJob).to have_received(:perform_later) do |_id, _two, json|
         dlme = JSON.parse(json)
         expect(dlme['id']).to eq 'AFRICOVER_EG_RIVERS'
-        expect(dlme['agg_data_provider']).to eq 'Harvard University. Center for Geographic Analysis.'
+        expect(dlme['agg_data_provider']).to eq 'Harvard University. Center for Geographic Analysis'
         expect(dlme['agg_provider']).to eq 'Harvard University Library'
         # rubocop:disable Metrics/LineLength
         expect(dlme['agg_has_view']).to include('wr_id' => ['http://hgl.harvard.edu:8080/HGL/jsp/HGL.jsp?action=VColl&VCollName=AFRICOVER_EG_RIVERS'],
